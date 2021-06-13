@@ -22,16 +22,8 @@ public class DispatcherEntity {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "authority")
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "authority_id")
-    private Authority authority;
-
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "user_to_authorities",
-//            joinColumns = @JoinColumn(name = "tab_number"),
-//            inverseJoinColumns = @JoinColumn(name = "authority_id")
-//    )
-//    private Set<Authority> authority;
+    @Column(name = "credentials")
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "credentials_id")
+    private CredentialsEntity credentials;
 }
