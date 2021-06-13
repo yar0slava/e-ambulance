@@ -25,8 +25,8 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public CallDto create(CallEntity callEntity) {
-        return callMapper.toDto(callsRepository.save(callEntity));
+    public CallDto create(CallDto callDto) {
+        return callMapper.toDto(callsRepository.save(callMapper.toEntity(callDto)));
     }
 
     @Override
@@ -36,8 +36,8 @@ public class CallServiceImpl implements CallService {
     }
 
     @Override
-    public CallDto update(CallEntity callEntity) {
-        return callMapper.toDto(callsRepository.save(callEntity));
+    public CallDto update(CallDto callDto) {
+        return callMapper.toDto(callsRepository.save(callMapper.toEntity(callDto)));
     }
 
     @Override
