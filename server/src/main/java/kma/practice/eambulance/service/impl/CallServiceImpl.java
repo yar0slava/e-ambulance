@@ -3,47 +3,53 @@ package kma.practice.eambulance.service.impl;
 
 import kma.practice.eambulance.database.entities.CallEntity;
 import kma.practice.eambulance.database.repositories.CallsRepository;
+import kma.practice.eambulance.dto.CallDto;
+import kma.practice.eambulance.mappers.CallMapper;
 import kma.practice.eambulance.service.CallService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CallServiceImpl implements CallService {
 
     private final CallsRepository callsRepository;
+    private final CallMapper callMapper;
 
-    public CallServiceImpl(CallsRepository callsRepository){
+    public CallServiceImpl(CallsRepository callsRepository, CallMapper callMapper){
         this.callsRepository = callsRepository;
+        this.callMapper = callMapper;
     }
 
     @Override
-    public CallEntity create(CallEntity callEntity) {
-        return callsRepository.save(callEntity);
+    public CallDto create(CallEntity callEntity) {
+        return callMapper.toDto(callsRepository.save(callEntity));
     }
 
     @Override
-    public CallEntity readById(long id) {
+    public CallDto readById(long id) {
         Optional<CallEntity> optional = callsRepository.findById(id);
-            return optional.orElse(null);
+            return callMapper.toDto(optional.orElse(null));
     }
 
     @Override
-    public CallEntity update(CallEntity callEntity) {
-        return callsRepository.save(callEntity);
+    public CallDto update(CallEntity callEntity) {
+        return callMapper.toDto(callsRepository.save(callEntity));
     }
 
     @Override
     public void delete(long id) {
          CallEntity callEntity = readById(id);
-         callsRepository.delete(callEntity);
+         callMapper.toDto(callsRepository.delete(callEntity));
     }
 
     @Override
-    public List<CallEntity> getAll() {
-        List<CallEntity> callEntities = (List<CallEntity>) callsRepository.findAll();
-        return callEntities.isEmpty() ? new ArrayList<>() :callEntities;
+    public List<CallDto> getAll() {
+        return callsRepository.findAll().stream()
+                .map(callMapper::toDto)
+                .collect(Collectors.toList());
     }
 }
