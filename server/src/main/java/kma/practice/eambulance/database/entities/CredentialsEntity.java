@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -23,16 +24,8 @@ public class CredentialsEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "authority")
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "authority_id")
     private Authority authority;
 
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(
-//            name = "user_to_authorities",
-//            joinColumns = @JoinColumn(name = "tab_number"),
-//            inverseJoinColumns = @JoinColumn(name = "authority_id")
-//    )
-//    private Set<Authority> authority;
 }
