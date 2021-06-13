@@ -3,13 +3,9 @@ package kma.practice.eambulance.controllers;
 import javassist.NotFoundException;
 import kma.practice.eambulance.dto.CallDto;
 import kma.practice.eambulance.service.CallService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -31,23 +27,24 @@ public class CallsController {
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public CallDto updateCall(@RequestBody CallDto callDto) {
-        return null;
+        return callService.update(callDto);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public CallDto saveCall(@RequestBody CallDto callDto) {
-        return null;
+        return callService.create(callDto);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void deleteCall(@PathVariable("id") Long callId) {
+        callService.delete(callId);
     }
 
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<CallDto> getAllCalls(){
-        return null;
+        return callService.getAll();
     }
 }
