@@ -42,8 +42,7 @@ public class CallServiceImpl implements CallService {
 
     @Override
     public void delete(long id) {
-         CallEntity callEntity = readById(id);
-         callMapper.toDto(callsRepository.delete(callEntity));
+         callsRepository.deleteById(id);
     }
 
     @Override
