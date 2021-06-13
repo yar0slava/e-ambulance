@@ -1,15 +1,16 @@
 package kma.practice.eambulance.service;
 
 import kma.practice.eambulance.database.entities.CallEntity;
+import kma.practice.eambulance.dto.CallDto;
 
 import java.util.List;
 
 public interface CallService {
 
-    CallEntity create(CallEntity callEntity);
-    CallEntity readById(long id);
-    CallEntity update(CallEntity callEntity);
+    CallDto create(CallEntity callEntity);
+    CallDto readById(long id);
+    CallDto update(CallEntity callEntity);
     void delete(long id);
-    List<CallEntity> getAll();
+    List<CallDto> getAll();
 
 }
