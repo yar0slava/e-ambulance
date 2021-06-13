@@ -51,6 +51,13 @@
             <artifactId>spring-data-commons</artifactId>
             <version>2.3.2.RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.modelmapper.extensions/modelmapper-spring -->
+        <dependency>
+            <groupId>org.modelmapper.extensions</groupId>
+            <artifactId>modelmapper-spring</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+
 
     </dependencies>
 
