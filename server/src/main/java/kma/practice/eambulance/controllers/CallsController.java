@@ -25,7 +25,7 @@ public class CallsController {
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CallDto getCall(@PathVariable("id") Long callId) throws NotFoundException {
-        return null;
+        return callService.readById(callId);
     }
 
     @PutMapping
@@ -34,10 +34,20 @@ public class CallsController {
         return null;
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public CallDto saveCall(@RequestBody CallDto callDto) {
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteCall(@PathVariable("id") Long callId) {
+    }
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<CallDto> getAllCalls(){
         return null;
     }
-
 }
