@@ -1,13 +1,9 @@
 package kma.practice.eambulance.database.repositories;
 
 import kma.practice.eambulance.database.entities.Authority;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+public interface AuthorityRepository extends JpaRepository<Authority, Long> {
 
-public interface AuthorityRepository extends CrudRepository<Authority, Long> {
 
-    Optional<Authority> findByLogin(String login);
-
-    Optional<Authority> findById(Long id);
 }

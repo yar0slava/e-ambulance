@@ -41,12 +41,10 @@ public class CallEntity {
     @Column(name = "report")
     private String report;
 
-    @Column(name = "crew")
     @ManyToOne
     @JoinColumn(name = "crew_id")
     private CrewEntity crew;
 
-    @Column(name = "dispatcher")
     @ManyToOne
     @JoinColumn(name = "dispatcher_id")
     private DispatcherEntity dispatcher;

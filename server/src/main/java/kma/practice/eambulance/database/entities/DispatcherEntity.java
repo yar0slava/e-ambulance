@@ -22,7 +22,6 @@ public class DispatcherEntity {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "credentials")
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "credentials_id")
     private CredentialsEntity credentials;

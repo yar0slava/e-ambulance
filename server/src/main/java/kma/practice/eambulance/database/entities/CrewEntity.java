@@ -32,7 +32,7 @@ public class CrewEntity {
     @Enumerated(EnumType.STRING)
     private Availability availability;
 
-    @Column(name = "credentials")
+
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "credentials_id")
     private CredentialsEntity credentials;
