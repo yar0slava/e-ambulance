@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DispatcherNavbarComponent } from './dispatcher-navbar.component';
+import { CrewInfoComponent } from './crew-info.component';
 
-describe('DispatcherNavbarComponent', () => {
-  let component: DispatcherNavbarComponent;
-  let fixture: ComponentFixture<DispatcherNavbarComponent>;
+describe('CrewInfoComponent', () => {
+  let component: CrewInfoComponent;
+  let fixture: ComponentFixture<CrewInfoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DispatcherNavbarComponent ]
+      declarations: [ CrewInfoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DispatcherNavbarComponent);
+    fixture = TestBed.createComponent(CrewInfoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

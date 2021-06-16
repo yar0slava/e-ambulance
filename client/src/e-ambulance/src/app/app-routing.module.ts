@@ -6,13 +6,16 @@ import {DispatcherInfoComponent} from './dispatcher-info/dispatcher-info.compone
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {NewCallComponent} from './new-call/new-call.component';
+import {CrewInfoComponent} from "./crew-info/crew-info.component";
 
 
 const routes: Routes = [
-  {path: 'call-info', component: CallInfoComponent},
-  {path: 'calls-list', component: CallsListComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: 'call/:id', component: CallInfoComponent},
+  {path: 'calls', component: CallsListComponent},
   {path: 'new-call', component: NewCallComponent},
-  {path: 'dispatcher-info', component: DispatcherInfoComponent},
+  {path: 'dispatcher/:id', component: DispatcherInfoComponent},
+  {path: 'crew/:id', component: CrewInfoComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent}
 ];
