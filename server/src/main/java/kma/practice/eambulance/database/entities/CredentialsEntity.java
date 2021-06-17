@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @ToString
 @Entity
-@Table(name = "authority")
+@Table(name = "credentials")
 public class CredentialsEntity {
 
     @Id
