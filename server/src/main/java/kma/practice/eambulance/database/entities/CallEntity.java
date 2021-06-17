@@ -29,6 +29,7 @@ public class CallEntity {
     )
     private long id;
 
+
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
