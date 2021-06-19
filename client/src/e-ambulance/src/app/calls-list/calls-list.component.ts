@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Call} from "../models/call";
+import {CallService} from "../call.service";
 
 @Component({
   selector: 'app-calls-list',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallsListComponent implements OnInit {
 
-  constructor() { }
+  public calls: Call[] | undefined;
+
+  constructor(private callService: CallService) {
+  }
+
+  private getCalls(): void {
+    this.callService.getCalls()
+      .subscribe(calls =>this.calls = calls);
+  }
 
   ngOnInit(): void {
+    this.getCalls();
   }
 
 }

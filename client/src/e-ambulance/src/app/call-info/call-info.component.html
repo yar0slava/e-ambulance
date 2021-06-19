@@ -13,46 +13,49 @@
       <hr class="mb-4">
 
       <table class="table table-borderless">
-        <tbody>
+        <tbody *ngIf="call">
         <tr>
           <th>ID</th>
-          <td>123456789</td>
+<!--          <td>123456789</td>-->
+          <td>{{call.id}}</td>
         </tr>
         <tr>
           <th>Date and time</th>
-          <td>05.06.2021 15:26</td>
-        </tr>
-        <tr>
-          <th>Patient name</th>
-          <td>Dragan Valentyna</td>
+<!--          <td>05.06.2021 15:26</td>-->
+          <td>{{call.dateTime}}</td>
         </tr>
         <tr>
           <th>Phone number</th>
-          <td>063 245 98 54</td>
+<!--          <td>063 245 98 54</td>-->
+          <td>{{call.phoneNumber}}</td>
         </tr>
         <tr>
           <th>Address</th>
-          <td>Nezalezhnosti str. 25, flat 16</td>
+<!--          <td>Nezalezhnosti str. 25, flat 16</td>-->
+          <td>{{call.address}}</td>
         </tr>
         <tr>
           <th>Call reason</th>
-          <td>Heart attack</td>
+<!--          <td>Heart attack</td>-->
+          <td>{{call.reason}}</td>
         </tr>
         <tr>
           <th>Patient`s condition</th>
-          <td>unstable</td>
+<!--          <td>unstable</td>-->
+          <td>{{call.patientCondition}}</td>
         </tr>
         <tr>
           <th>Crew №</th>
-          <td>123456798</td>
+<!--          <td>123456798</td>-->
+          <td>{{call.crew.tabNumber}}</td>
         </tr>
         <tr>
           <th>Status</th>
-          <td>on the road</td>
+<!--          <td>on the road</td>-->
+          <td>{{call.status}}</td>
         </tr>
         </tbody>
       </table>
-
     </div>
   </div>
 
