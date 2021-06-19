@@ -16,21 +16,28 @@
 
         </tr>
         </thead>
-        <tbody>
-        <tr role="button">
-          <th scope="row">1</th>
-          <td>Heart attack</td>
-          <td>Nezalezhnosti str. 25, flat 16</td>
-          <td>123456789</td>
-          <td>on the road</td>
+        <tbody *ngFor="let call of calls">
+        <tr role="button" routerLink="/call/{{call.id}}">
+          <th scope="row">{{call.id}}</th>
+          <td>{{call.reason}}</td>
+          <td>{{call.address}}</td>
+          <td>{{call.crew.tabNumber}}</td>
+          <td>{{call.status}}</td>
         </tr>
-        <tr role="button">
-          <th scope="row">2</th>
-          <td>stabbing stomach pains</td>
-          <td>Danchenka str. 18, flat 55</td>
-          <td>132456788</td>
-          <td>completed</td>
-        </tr>
+<!--        <tr role="button">-->
+<!--          <th scope="row">1</th>-->
+<!--          <td>Heart attack</td>-->
+<!--          <td>Nezalezhnosti str. 25, flat 16</td>-->
+<!--          <td>123456789</td>-->
+<!--          <td>on the road</td>-->
+<!--        </tr>-->
+<!--        <tr role="button">-->
+<!--          <th scope="row">2</th>-->
+<!--          <td>stabbing stomach pains</td>-->
+<!--          <td>Danchenka str. 18, flat 55</td>-->
+<!--          <td>132456788</td>-->
+<!--          <td>completed</td>-->
+<!--        </tr>-->
         </tbody>
       </table>
     </div>
