@@ -1,7 +1,7 @@
-export interface Crew{
-  tabNumber: number;
-  members: string;
-  carNumber: string;
-  location: string;
-  availability: string;
+export class Crew{
+  tabNumber?: number;
+  members?: string;
+  carNumber?: string;
+  location?: string;
+  availability?: string;
 }
