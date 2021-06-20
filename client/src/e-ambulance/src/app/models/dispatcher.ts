@@ -1,4 +1,4 @@
 export interface Dispatcher{
-  tabNumber: number;
-  fullName: string;
+  tabNumber?: number;
+  fullName?: string;
 }
