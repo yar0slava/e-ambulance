@@ -4,14 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @ToString
 @Entity
+
 
 @Table(name = "calls")
 public class CallEntity {
@@ -29,10 +32,11 @@ public class CallEntity {
     )
     private long id;
 
-
-    @Column(name = "date_time")
+    @CreatedDate
+    @Column(name = "date_time", nullable = false, updatable = false)
     private LocalDateTime dateTime;
 
+    @NotBlank(message = "The roleName cannot be empty")
     @Column(name = "address")
     private String address;
 
