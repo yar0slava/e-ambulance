@@ -1,5 +1,5 @@
 <!--dispatcher navbar-->
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav *ngIf="authority == 'dispatcher'" class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#" routerLink="/home">eAmbulance</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
@@ -24,8 +24,8 @@
 </nav>
 
 <!--crew navbar-->
-<!--
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!--&lt;!&ndash;-->
+<nav *ngIf="authority == 'crew'" class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">eAmbulance</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
@@ -36,23 +36,23 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">My cabinet</a>
+          <a class="nav-link" href="#" routerLink="/crew">My cabinet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Calls history</a>
+          <a class="nav-link" href="#" routerLink="/calls-list">Calls history</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Current call</a>
+          <a class="nav-link" href="#" routerLink="/call-info">Current call</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
--->
+<!--&ndash;&gt;-->
 
 <!--admin navbar-->
-<!--
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!--&lt;!&ndash;-->
+<nav *ngIf="authority == 'admin'" class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
     <a class="navbar-brand" href="#">eAmbulance</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
@@ -63,19 +63,19 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">My cabinet</a>
+          <a class="nav-link" href="#" routerLink="/dispatcher">My cabinet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Calls</a>
+          <a class="nav-link" href="#" routerLink="/calls-list">Calls</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Crews</a>
+          <a class="nav-link" href="#" routerLink="/crews-list">Crews</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dispatchers</a>
+          <a class="nav-link" href="#" routerLink="/dispatchers-list">Dispatchers</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
--->
+<!--&ndash;&gt;-->
