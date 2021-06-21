@@ -13,6 +13,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200/")
 @RestController
 @RequestMapping()
 public class SecurityController {
@@ -30,12 +31,9 @@ public class SecurityController {
     @PostMapping(value = "/login")
     @ResponseStatus(HttpStatus.OK)
     public LoginResponseDto login(@RequestBody CredentialsDto credentialsDto) throws  Exception{
-        System.out.println("in login");
         authenticate(credentialsDto.getLogin(), credentialsDto.getPassword());
-        System.out.println("after auth");
         final UserDetails userDetails = credentialsService.loadUserByUsername(credentialsDto.getLogin());
         final String token = jwtUtil.generateToken(userDetails);
-        System.out.println("before return");
         return new LoginResponseDto(((CredentialsEntity)userDetails).getAuthority(), token);
     }
 
@@ -49,15 +47,12 @@ public class SecurityController {
     private void authenticate(String username, String password) throws Exception{
         try{
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-            System.out.println("tried");
         }catch (DisabledException e){
             System.out.println(1);
             throw new Exception("USER_DISABLED", e);
         }catch (BadCredentialsException e){
-            System.out.println(2);
             throw new Exception("INVALID_CREDENTIALS", e);
         }catch (Exception ex){
-            System.out.println(3);
         }
     }
 }
