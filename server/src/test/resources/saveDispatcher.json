@@ -1,0 +1,13 @@
+{
+  "tabNumber": 123456777,
+  "fullName": "Kurash Inna",
+  "credentials": {
+    "id": 4,
+    "login": "crew1234@gmail.com",
+    "password": "$2a$10$7bs9lXts6A01Ar0bSAy6z.HYV8UiSb/ibnGAqY/RbUHLst7N7zBuq",
+    "authority": {
+      "id": 3,
+      "name": "crew"
+    }
+  }
+}
