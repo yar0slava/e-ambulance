@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -42,12 +43,6 @@ public class CallEntity {
     @Column(name = "date_time")
     private LocalDateTime dateTime;
 
-    // автоматичне створення часу
-    @PrePersist
-    protected void onCreate() {
-        dateTime = LocalDateTime.now();
-    }
-
 
     @Column(name = "address")
     @NotBlank(message = "The address cannot be empty")
@@ -58,7 +53,6 @@ public class CallEntity {
     @Column(name = "reason")
     private String reason;
 
-
     @Column(name = "phone_number")
     @Pattern(regexp="(^$|[0-9]{10})")
     @NotBlank(message = "The phone cannot be empty")
@@ -67,9 +61,17 @@ public class CallEntity {
     @Column(name = "patient_condition")
     private String patientCondition;
 
-    @Column(name = "status")
+    @Column(name = "status", nullable = false, columnDefinition = "WAITING_FOR_CREW")
     @Enumerated(EnumType.STRING)
     private CallStatus status;
+
+    // автоматичне створення часу
+    // автоматичне створення статусу
+    @PrePersist
+    protected void onCreate(){
+        dateTime = LocalDateTime.now();
+        status = CallStatus.WAITING_FOR_CREW;
+    }
 
     @NotBlank(message = "The report cannot be empty")
     @Column(name = "report")
