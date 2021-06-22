@@ -7,6 +7,8 @@ import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
 import {NewCallComponent} from './new-call/new-call.component';
 import {CrewInfoComponent} from "./crew-info/crew-info.component";
+import {CallReportComponent} from "./call-report/call-report.component";
+import {CrewCallsListComponent} from "./crew-calls-list/crew-calls-list.component";
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path: 'call/:id', component: CallInfoComponent},
   {path: 'calls', component: CallsListComponent},
   {path: 'new-call', component: NewCallComponent},
+  {path: 'call-report/:id', component: CallReportComponent},
+  {path: 'crew-calls/:id', component: CrewCallsListComponent},
   {path: 'dispatcher/:id', component: DispatcherInfoComponent},
   {path: 'crew/:id', component: CrewInfoComponent},
   {path: 'home', component: HomeComponent},
