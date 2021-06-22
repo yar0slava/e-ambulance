@@ -7,9 +7,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Set;
+
 
 @Getter
 @Setter
@@ -22,10 +24,13 @@ public class CredentialsEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Email
+    @NotBlank(message = "The login cannot be empty")
     @Column(name = "login", unique = true)
     private String login;
 
     @Column(name = "password")
+    @NotBlank(message = "The password cannot be empty")
     private String password;
 
     @ManyToOne
