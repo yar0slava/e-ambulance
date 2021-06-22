@@ -6,6 +6,7 @@ import kma.practice.eambulance.database.repositories.CallsRepository;
 import kma.practice.eambulance.dto.CallDto;
 import kma.practice.eambulance.mappers.CallMapper;
 import kma.practice.eambulance.service.CallService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
@@ -48,6 +49,13 @@ public class CallServiceImpl implements CallService {
     @Override
     public List<CallDto> getAll() {
         return callsRepository.findAll().stream()
+                .map(callMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CallDto> findByCrew(long tabNumber){
+        return callsRepository.findByCrew_TabNumber(tabNumber, Sort.by("dateTime").descending()).stream()
                 .map(callMapper::toDto)
                 .collect(Collectors.toList());
     }

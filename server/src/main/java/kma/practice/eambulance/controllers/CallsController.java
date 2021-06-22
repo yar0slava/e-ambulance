@@ -48,4 +48,10 @@ public class CallsController {
     public List<CallDto> getAllCalls(){
         return callService.getAll();
     }
+
+    @GetMapping("/crew/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CallDto> getCallsByCrew(@PathVariable("id") Long crewTabNumber){
+        return callService.findByCrew(crewTabNumber);
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LocalStorageService} from "../local-storage.service";
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public authority: string | null | undefined;
 
-  ngOnInit(): void {
+  constructor(private localStorageService: LocalStorageService) { }
+
+  private getAuthority(): void{
+    this.authority = this.localStorageService.get('authority');
   }
 
+  ngOnInit(): void {
+    console.log(this.authority);
+    this.getAuthority();
+  }
 }
