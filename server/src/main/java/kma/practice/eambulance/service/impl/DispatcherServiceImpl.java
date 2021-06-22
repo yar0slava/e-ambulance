@@ -49,4 +49,9 @@ public class DispatcherServiceImpl implements DispatcherService {
                 .map(dispatcherMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public long getTabNumberByLogin(String login){
+        System.out.println(dispatchersRepository.findByCredentials_Login(login));
+        return dispatchersRepository.findByCredentials_Login(login).getTabNumber();
+    }
 }

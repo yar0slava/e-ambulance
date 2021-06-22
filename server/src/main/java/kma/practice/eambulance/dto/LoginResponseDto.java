@@ -11,4 +11,5 @@ public class LoginResponseDto {
 
     private String authority;
     private String token;
+    private long tabNumber;
 }

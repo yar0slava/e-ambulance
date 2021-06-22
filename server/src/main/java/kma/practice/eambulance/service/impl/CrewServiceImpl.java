@@ -49,4 +49,8 @@ public class CrewServiceImpl  implements CrewService {
                 .map(crewMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    public long getTabNumberByLogin(String login){
+        return crewsRepository.findByCredentials_Login(login).orElse(null).getTabNumber();
+    }
 }

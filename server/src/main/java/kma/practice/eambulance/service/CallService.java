@@ -11,5 +11,5 @@ public interface CallService {
     CallDto update(CallDto callDto);
     void delete(long id);
     List<CallDto> getAll();
-
+    public List<CallDto> findByCrew(long tabNumber);
 }

@@ -5,6 +5,8 @@ import kma.practice.eambulance.database.entities.CredentialsEntity;
 import kma.practice.eambulance.dto.LoginResponseDto;
 import kma.practice.eambulance.dto.CredentialsDto;
 import kma.practice.eambulance.service.impl.CredentialsServiceImpl;
+import kma.practice.eambulance.service.impl.CrewServiceImpl;
+import kma.practice.eambulance.service.impl.DispatcherServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,11 +23,15 @@ public class SecurityController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final CredentialsServiceImpl credentialsService;
+    private final CrewServiceImpl crewService;
+    private final DispatcherServiceImpl dispatcherService;
 
-    public SecurityController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, CredentialsServiceImpl credentialsService) {
+    public SecurityController(AuthenticationManager authenticationManager, JwtUtil jwtUtil, CredentialsServiceImpl credentialsService, CrewServiceImpl crewService, DispatcherServiceImpl dispatcherService) {
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         this.credentialsService = credentialsService;
+        this.crewService = crewService;
+        this.dispatcherService = dispatcherService;
     }
 
     @PostMapping(value = "/login")
@@ -34,7 +40,15 @@ public class SecurityController {
         authenticate(credentialsDto.getLogin(), credentialsDto.getPassword());
         final UserDetails userDetails = credentialsService.loadUserByUsername(credentialsDto.getLogin());
         final String token = jwtUtil.generateToken(userDetails);
-        return new LoginResponseDto(((CredentialsEntity)userDetails).getAuthority(), token);
+
+        String authority = ((CredentialsEntity)userDetails).getAuthority();
+        System.out.println(authority);
+
+        if(authority.equals("crew")){
+            return new LoginResponseDto(authority, token, crewService.getTabNumberByLogin(credentialsDto.getLogin()));
+        }else{
+            return new LoginResponseDto(authority, token, dispatcherService.getTabNumberByLogin(credentialsDto.getLogin()));
+        }
     }
 
     @PostMapping(value = "/signup")
