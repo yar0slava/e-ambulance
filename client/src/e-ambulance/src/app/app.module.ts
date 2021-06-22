@@ -13,6 +13,10 @@ import { CallsListComponent } from './calls-list/calls-list.component';
 import { NewCallComponent } from './new-call/new-call.component';
 import { CrewInfoComponent } from './crew-info/crew-info.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CallReportComponent } from './call-report/call-report.component';
+import { CrewCallsListComponent } from './crew-calls-list/crew-calls-list.component';
+import { RegisterCrewComponent } from './register-crew/register-crew.component';
+import { RegisterDispatcherComponent } from './register-dispatcher/register-dispatcher.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     CallsListComponent,
     NewCallComponent,
     CrewInfoComponent,
-    NavbarComponent
+    NavbarComponent,
+    CallReportComponent,
+    CrewCallsListComponent,
+    RegisterCrewComponent,
+    RegisterDispatcherComponent
   ],
   imports: [
     BrowserModule,

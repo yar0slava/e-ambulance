@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>Crew Registration</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12  order-md-1 d-flex justify-content-center">
+      <form class="needs-validation" novalidate>
+        <div class="mb-3">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" id="id" placeholder="" value="" required>
+          <div class="invalid-feedback">
+            ID is required.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="carNumber">Car number</label>
+          <input type="text" class="form-control" id="carNumber" placeholder="" value="" required>
+          <div class="invalid-feedback">
+            Car number is required.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="members">Members</label>
+          <textarea class="form-control" id="members" placeholder="" value="" required></textarea>
+          <div class="invalid-feedback">
+            Members are required.
+          </div>
+        </div>
+
+        <hr class="mb-4">
+
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Please enter a valid email address for shipping updates.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="password" required>
+          <div class="invalid-feedback">
+            Please enter your password.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword">Confirm password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="password" required>
+          <div class="invalid-feedback">
+            Please confirm your password.
+          </div>
+        </div>
+
+        <button class="btn btn-dark btn-block" type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+</div>

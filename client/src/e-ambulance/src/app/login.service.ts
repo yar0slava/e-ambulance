@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Credentials} from "./models/credentials";
-import {catchError, tap} from "rxjs/operators";
+import {tap} from "rxjs/operators";
 import {LoginResponse} from "./models/login-response";
 import {LocalStorageService} from "./local-storage.service";
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,7 @@ export class LoginService {
       tap((response: LoginResponse) => {
         this.localStorageService.set('JWTToken',response.token);
         this.localStorageService.set('authority',response.authority);
+        this.localStorageService.set('tabNumber',String(response.tabNumber));
         this.router.navigate(['home'])
       }));
   }

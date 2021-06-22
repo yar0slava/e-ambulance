@@ -6,7 +6,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-6  order-md-1 d-flex justify-content-center">
+    <div class="col-sm-6  order-md-1 justify-content-center">
       <form class="needs-validation" novalidate>
 
         <div class="mb-3">
@@ -42,7 +42,7 @@
         <div class="mb-3">
           <label for="crew">Crew</label>
           <select class="form-select d-block w-100" id="crew" [(ngModel)]="call.crew!.tabNumber" [ngModelOptions]="{standalone: true}" required>
-            <option value="">Choose...</option>
+            <option>Choose</option>
             <option *ngFor="let tabNum of crewTabNums" [ngValue]="tabNum">{{tabNum}}</option>
           </select>
           <div class="invalid-feedback">
@@ -51,6 +51,11 @@
         </div>
 
         <hr class="mb-4">
+
+        <div class="mb-3">
+          <label id="error">{{error}}</label>
+        </div>
+
         <button class="btn btn-primary btn-block" type="submit" (click)="onCreate()">Create call</button>
       </form>
     </div>
@@ -65,15 +70,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr role="button">
-          <th scope="row">1</th>
-          <td>Nezalezhnosti str. 25, flat 16</td>
-          <td>on the road</td>
-        </tr>
-        <tr role="button">
-          <th scope="row">2</th>
-          <td>Danchenka str. 18, flat 55</td>
-          <td>completed</td>
+        <tr *ngFor="let crew of crews" routerLink="/crew/{{crew.tabNumber}}" role="button">
+          <th scope="row">{{crew.tabNumber}}</th>
+          <td>{{crew.location}}</td>
+          <td>{{crew.availability}}</td>
         </tr>
         </tbody>
       </table>
