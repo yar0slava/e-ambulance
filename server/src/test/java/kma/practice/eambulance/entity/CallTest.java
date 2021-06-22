@@ -1,8 +1,7 @@
-package kma.practice.eambulance.model;
+package kma.practice.eambulance.entity;
 
 
 import kma.practice.eambulance.database.entities.CallEntity;
-import kma.practice.eambulance.database.entities.CallStatus;
 import kma.practice.eambulance.database.entities.CrewEntity;
 import kma.practice.eambulance.database.entities.DispatcherEntity;
 
@@ -19,7 +18,6 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace= AutoConfigureTestDatabase.Replace.NONE)
@@ -39,13 +37,13 @@ public class CallTest {
 
         validCallEntity = new CallEntity();
 
-        validCallEntity.setStatus(CallStatus.WAITING_FOR_CREW);
         validCallEntity.setReport("none");
         validCallEntity.setPatientCondition("unstable");
         validCallEntity.setPhoneNumber("0632459854");
 
         validCallEntity.setCrew(validCrewEntity);
         validCallEntity.setDispatcher(validDispatcherEntity);
+
 
     }
 
@@ -57,7 +55,6 @@ public class CallTest {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<CallEntity>> violations = validator.validate(validCallEntity);
-
         assertEquals(0, violations.size());
     }
 
@@ -70,7 +67,6 @@ public class CallTest {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<CallEntity>> violations = validator.validate(validCallEntity);
-
         assertEquals(1, violations.size());
 
     }
